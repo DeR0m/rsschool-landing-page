@@ -1,0 +1,52 @@
+@import './modern-normalize.css';
+
+:root{
+    --color-text: #403F3D;
+
+}
+
+body{
+    background: #E1D4C9;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 0 40px;
+    color: var(--color-text);
+    font: 600 16px 'Inter', sans-serif;
+    align-items: center;
+}
+
+.header__logo{
+    width: 100px;
+    height: 60px;
+}
+
+.header__menu{
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.header__menu-link{    
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.header__actions-list{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    align-items: center;
+    color: var(--color-text);
+}
+
+.header__actions-item--spaced{
+    margin-left: 24px;
+    margin-right: 8px;
+}
+
+
+

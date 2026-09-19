@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee House</title>
-    <link rel="stylesheet" href="/style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    
+    <header class="header">
+        <img class="header__logo" src="images/logo.png" alt="Logo">
+         
+        <nav class="header__nav">
+            <ul class="header__menu">
+                <li class="header__menu-item">
+                    <a class="header__menu-link" href="/favoriteCoffee">Favorite coffee</a>
+                </li>
+                <li class="header__menu-item">
+                    <a class="header__menu-link" href="/about">About</a>
+                </li>
+                <li class="header__menu-item">
+                    <a class="header__menu-link" href="/mobileApp">Mobile app</a>
+                </li>
+                <li class="header__menu-item">
+                    <a class="header__menu-link" href="/contact">Contact us</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="header__actions">
+            <ul class="header__actions-list">
+                <li class="header__actions-item">
+                    <img src="images/favicons/Theme switch.png" alt="switch">
+                </li>
+                <li class="header__actions-item header__actions-item--spaced">
+                    <a class="header__menu-link" href="coffee-menu">Menu</a>
+                </li>
+                <li class="header__actions-item">
+                    <img src="images/favicons/coffee-cup.png" alt="coffee-cup">
+                </li>
+            </ul>
+        </div>
+    </header>
 </body>
 </html>
