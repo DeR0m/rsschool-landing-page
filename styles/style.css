@@ -1,12 +1,15 @@
 @import './modern-normalize.css';
 
 :root{
-    --color-text: #403F3D;
+    --primary: #403F3D;
+    --inverse: #E1D4C9;
+    --accent: #B0907A;
+
 
 }
 
 body{
-    background: #E1D4C9;
+    background: var(--inverse);
 }
 
 .header{
@@ -14,7 +17,7 @@ body{
     justify-content: space-between;
     margin: 20px 0;
     padding: 0 40px;
-    color: var(--color-text);
+    color: var(--primary);
     font: 600 16px 'Inter', sans-serif;
     align-items: center;
 }
@@ -31,7 +34,7 @@ body{
 }
 
 .header__menu-link{    
-    color: var(--color-text);
+    color: var(--primary);
     text-decoration: none;
 }
 
@@ -40,7 +43,6 @@ body{
     list-style: none;
     margin: 0;
     align-items: center;
-    color: var(--color-text);
 }
 
 .header__actions-item--spaced{
@@ -48,5 +50,54 @@ body{
     margin-right: 8px;
 }
 
+.hero{
+    width: 100%;
+    height: 644px;
+    color: var(--inverse);
+}
 
+.hero__container{
+    max-width: 1360px;
+    height: 644px;
+    background-image: url("../images/img-hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 20px auto;
+    border-radius: 40px;
+}
+
+.hero__content{
+    width: 530px;
+    height: 444px;
+    padding: 100px;
+}
+
+.hero__title{
+    margin: 0 0 40px 0;
+    font: 600 72px 'Inter', sans-serif;
+    line-height: 105%;
+}
+
+.hero__title-accent{
+    margin: 0 0 40px 0;
+    color: var(--accent);
+    font: italic 600 72px 'Inter', sans-serif;
+}
+
+.hero__text{
+    margin: 0;
+    font: 400 16px 'Inter', sans-serif;
+    line-height: 105%;
+}
+
+.hero__btn{
+    margin: 0;
+    margin-top: 40px;
+    padding: 20px 78px;
+    border-radius: 100px;
+    background-color: var(--inverse);
+    border: none;
+    color: var(--primary);
+    font: 600 16px 'Inter', sans-serif;
+}
 
