@@ -4,8 +4,6 @@
     --primary: #403F3D;
     --inverse: #E1D4C9;
     --accent: #B0907A;
-
-
 }
 
 body{
@@ -30,6 +28,7 @@ body{
 .header__menu{
     display: flex;
     list-style: none;
+    padding-left: 0;
     gap: 40px;
 }
 
@@ -41,6 +40,7 @@ body{
 .header__actions-list{
     display: flex;
     list-style: none;
+    padding-left: 0;
     margin: 0;
     align-items: center;
 }
@@ -51,8 +51,9 @@ body{
 }
 
 .hero{
-    max-width: 100%;
+    width: 100%;
     height: 644px;
+    box-sizing: border-box;
     color: var(--inverse);
     padding: 0 40px;
 }
@@ -83,7 +84,7 @@ body{
 
 .text-accent{
     color: var(--accent);
-    font: italic 600 72px 'Inter', sans-serif;
+    font-style: italic;
 }
 
 .hero__text{
@@ -103,3 +104,99 @@ body{
     font: 600 16px 'Inter', sans-serif;
 }
 
+.favorite-coffee{
+    width: 100%;
+    font: 600 16px/1.25 'Inter', sans-serif;
+    color: var(--primary);
+    padding: 0 40px;
+    margin-top: 100px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.favorite-coffee__title{
+    font-size: 60px;
+    margin: 0 0 40px 0;
+}
+
+.slider{
+    margin: 40px auto;
+}
+
+.slider-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.slider__row{
+    max-width: 1152px;
+}
+
+.slider__content{
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.slider__description{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.slider__title{
+    margin: 0;
+    font-size: 24px;
+}
+
+.slider__text{
+    margin: 16px auto;
+    line-height: 150%;
+}
+
+.slider__cost{
+    margin: 0;
+    font-size: 24px;
+}
+
+.slider__button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 2px solid #665F55;
+    transition: all 0.5s ease-out;
+}
+
+.slider__button--prev{
+    left: 10px;
+}
+
+.slider__button--next{
+    right: 10px;
+}
+
+.slider__button:hover{
+    background-color: #665F55;
+}
+
+.slider-control{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.slider__dot{
+    width: 40px;
+    height: 4px;
+    background-color: #C1B6AD;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider__dot.slider__dot--active{
+    background-color: #665F55;
+}
