@@ -412,6 +412,8 @@ body{
 }
 
 .footer__contacts{
+    width: 195px;
+    height: 116px;
     display: flex;
     flex-direction: column;
     font-size: 16px;
