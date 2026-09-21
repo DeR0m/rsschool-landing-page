@@ -1,12 +1,18 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 .menu{
     width: 100%;
-    padding: 0 40px;
     margin: 20px 0 100px 0;
-    box-sizing: border-box;
     color: var(--text-primary);
 }
 
 .container--main{
+    max-width: 1440px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +28,8 @@
 }
 
 .menu__title{
-    width: 800px;
+    max-width: 800px;
+    width: 100%;
     font-size: 60px;
     text-align: center;
 }
@@ -90,8 +97,8 @@
 }
 
 .menu-grid__item{
-    width: 310px;
-    height: 506px;
+    max-width: 310px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     border-radius: 40px;
@@ -104,8 +111,9 @@
 }
 
 .menu-grid__box{
-    width: 310px;
+    max-width: 310px;
     height: 310px;
+    width: 100%;
     border-radius: 40px;
     overflow: hidden;
 }
@@ -126,7 +134,8 @@
 }
 
 .menu-grid__title{
-    width: 270px;
+    max-width: 270px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -145,7 +154,8 @@
 }
 
 .menu-grid__cost{
-    width: 270px;
+    max-width: 270px;
+    width: 100%;
     margin: 0;
     font: 600 24px/1.25 'Inter', 'sans-serif';
 }
