@@ -59,13 +59,17 @@
     color: var(--inverse);
 }
 
-.menu-grid{
+.menu-panel{
     max-width: 1360px;
     width: 100%;
     display: grid;
     gap: 40px;
     grid-template-columns: repeat(auto-fill, 310px);
     justify-content: center;
+}
+
+.menu-panel.is-hidden{
+    display: none;
 }
 
 .menu-grid__item{
