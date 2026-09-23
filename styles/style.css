@@ -133,6 +133,7 @@ body {
     gap: 10px;
     color: var(--text-inverse);
     background-color: var(--text-accent);
+    cursor: pointer;
 }
 
 [data-theme="dark"] .theme-switch__light {
@@ -147,6 +148,7 @@ body {
     gap: 10px;
     color: var(--text-inverse);
     background-color: transparent;
+    cursor: pointer;
 }
 
 [data-theme="light"] .theme-switch__dark {
@@ -158,6 +160,7 @@ body {
     border: none;
     border-radius: 100px;
     background-color: transparent;
+    cursor: pointer;
 }
 
 [data-theme="dark"] .theme-switch__dark {
@@ -170,6 +173,7 @@ body {
     border-radius: 100px;
     background-color: var(--text-accent);
     color: var(--text-inverse);
+    cursor: pointer;
 }
 
 [data-theme="light"] .theme-switch__dark:hover {
@@ -205,6 +209,7 @@ body {
     border-radius: 100px;
     background-color: transparent;
     color: var(--text-primary);
+    cursor: pointer;
 }
 
 .header__icon--menu {
@@ -369,6 +374,7 @@ body {
     border-radius: 50%;
     color: var(--text-primary);
     border: 2px solid var(--border-inverse);
+    cursor: pointer;
     transition: all 0.5s ease-out;
 }
 
@@ -397,16 +403,38 @@ body {
 }
 
 .slider__dot {
+    position: relative;
     width: 40px;
     height: 4px;
     background-color: var(--border-primary);
     border-radius: 100px;
+    overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.slider__dot.slider__dot--active {
+@keyframes dot-loading {
+    0% {
+        transform: scaleX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+.slider__dot.slider__dot--active::before {
     background-color: var(--bg-container);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: left center;
+    animation: dot-loading 5.5s linear infinite;
 }
 
 .about {
@@ -431,6 +459,7 @@ body {
     gap: 40px;
     flex-wrap: nowrap;
     justify-content: center;
+    cursor: pointer;
 }
 
 .about__column {
@@ -660,10 +689,12 @@ body {
 .contact__item {
     display: flex;
     gap: 4px;
+    cursor: pointer;
     transition: all 0.5s ease-out;
 }
 
 .contact__item:hover {
+    box-sizing: border-box;
     border-bottom: 2px solid var(--text-inverse);
 }
 
