@@ -44,15 +44,15 @@
     }
 
     function pause() {
-        isPaused = true;
         if (isPaused) return;
+        isPaused = true;
         if (rafId) cancelAnimationFrame(rafId);
         rafId = null;
     }
 
     function resume() {
+        if (!isPaused) return;
         isPaused = false;
-        if (isPaused) return;
         lastTick = 0;
         startLoop();
     }
@@ -90,8 +90,7 @@
         sliders.forEach((sliderElement, index) => sliderElement.classList.toggle('active', index === sliderIndex));
         dots.forEach((dotElement, index) => dotElement.classList.toggle('slider__dot--active', index === sliderIndex));
 
-        const activeDot = dots[sliderIndex];
-        if (activeDot) activeDot.style.setProperty('--dot-progress', 0);
+        updateDotProgress(0);
     }
 
     updateSlider();
