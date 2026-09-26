@@ -170,6 +170,7 @@
     sliderButtonNext?.addEventListener('click', () => setSliderNext());
     dots.forEach((dotElement, dotIndex) => {
         dotElement.addEventListener('click', () => setSlider(dotIndex));
+        dotElement.blur();
     });
 
     document.addEventListener('keydown', (e) => {
