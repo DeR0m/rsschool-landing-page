@@ -101,7 +101,9 @@
     slider.addEventListener('pointerleave', resume);
     slider.addEventListener('pointercancel', resume);
 
-    slider.addEventListener('contextmenu', (e) => e.preventDefault());
+    slider.addEventListener('contextmenu', (e) => {
+        if (e.target.tagName === 'IMG') e.preventDefault();
+    });
 
     sliderButtonPrev?.addEventListener('click', () => setSliderPrev());
     sliderButtonNext?.addEventListener('click', () => setSliderNext());
