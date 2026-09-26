@@ -101,6 +101,8 @@
     slider.addEventListener('pointerleave', resume);
     slider.addEventListener('pointercancel', resume);
 
+    slider.addEventListener('contextmenu', (e) => e.preventDefault());
+
     sliderButtonPrev?.addEventListener('click', () => setSliderPrev());
     sliderButtonNext?.addEventListener('click', () => setSliderNext());
     dots.forEach((dotElement, dotIndex) => {
