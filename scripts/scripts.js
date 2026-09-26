@@ -107,15 +107,18 @@
     dots.forEach((dotElement, dotIndex) => {
         dotElement.addEventListener('click', () => setSlider(dotIndex));
     });
-    
+
     document.addEventListener('keydown', (e) => {
         switch (e.key) {
             case 'ArrowLeft':
+                e.preventDefault();
+                if (e.repeat) return;
                 setSliderPrev();
                 break;
             case 'ArrowRight':
+                e.preventDefault();
+                if (e.repeat) return;
                 setSliderNext();
-            default:
                 break;
         }
     });
