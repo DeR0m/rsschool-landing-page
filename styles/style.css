@@ -437,9 +437,17 @@ body {
     overflow: hidden;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
-.slider__dot:hover {
+@media (hover: hover) and (pointer: fine) {
+    .slider__dot:not(.slider__dot--active):hover {
+        background-color: var(--bg-container);
+    }
+}
+
+.slider__dot:not(.slider__dot--active):hover {
     background-color: var(--bg-container);
 }
 
