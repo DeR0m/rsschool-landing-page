@@ -447,10 +447,6 @@ body {
     }
 }
 
-.slider__dot:not(.slider__dot--active):hover {
-    background-color: var(--bg-container);
-}
-
 .slider__dot::before {
     content: '';
     position: absolute;
