@@ -126,8 +126,8 @@
 
         if (Math.abs(dx) > SWIPE_THRESHOLD) {
             pointerMoved = true;
-            if (dx < 0) setSliderPrev();
-            else setSliderNext();
+            if (dx < 0) setSliderNext();
+            else setSliderPrev();
         }
     }
 
