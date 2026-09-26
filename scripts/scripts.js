@@ -100,8 +100,10 @@
 
     function updateSlider() {
         sliders.forEach((sliderElement, index) => sliderElement.classList.toggle('active', index === sliderIndex));
-        dots.forEach((dotElement, index) => dotElement.classList.toggle('slider__dot--active', index === sliderIndex));
-
+        dots.forEach((dotElement, index) => {
+            dotElement.classList.toggle('slider__dot--active', index === sliderIndex);
+            dotElement.style.setProperty('--dot-progress', 0);
+        });
         updateDotProgress(0);
     }
 
