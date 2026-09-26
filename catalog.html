@@ -243,19 +243,19 @@
                         Behind each of our cups hides an <span class="text-accent">amazing surprise</span>
                     </h1>
                     <div class="menu__tabs">
-                        <button class="menu__button menu__button--active" data-tab="coffee">
+                        <button class="menu__button menu__button--active" data-tab="coffee" role="tab">
                             <span class="menu__item menu__item--active">
                                 <img class="menu__icon" src="images/favicons/catalog/coffee.png" alt="coffee">
                             </span>
                             Coffee
                         </button>
-                        <button class="menu__button" data-tab="tea">
+                        <button class="menu__button" data-tab="tea" role="tab">
                             <span class="menu__item">
                                 <img class="menu__icon" src="images/favicons/catalog/tea.png" alt="tea">
                             </span>
                             Tea
                         </button>
-                        <button class="menu__button" data-tab="dessert">
+                        <button class="menu__button" data-tab="dessert" role="tab">
                             <span class="menu__item">
                                 <img class="menu__icon" src="images/favicons/catalog/dessert.png" alt="dessert">
                             </span>
@@ -264,7 +264,7 @@
                     </div>
                 </div>
 
-                <div class="menu-panel" data-content="coffee">
+                <div class="menu-panel menu-panel--active" data-content="coffee" role="tabcategory">
                     <div class="menu-grid__item">
                         <div class="menu-grid__box">
                             <img class="menu-grid__image" src="images/catalog/coffee/coffee-1.jpg" alt="Irish coffee">
@@ -403,7 +403,7 @@
                     </div>
                 </div>
 
-                <div class="menu-panel is-hidden" data-content="tea">
+                <div class="menu-panel" data-content="tea" role="tabcategory">
                     <div class="menu-grid__item">
                         <div class="menu-grid__box">
                             <img class="menu-grid__image" src="images/catalog/tea/tea-1.png" alt="Moroccan">
@@ -472,7 +472,7 @@
                     </div>
                 </div>
 
-                <div class="menu-panel is-hidden" data-content="dessert">
+                <div class="menu-panel" data-content="dessert" role="tabcategory">
                     <div class="menu-grid__item">
                         <div class="menu-grid__box">
                             <img class="menu-grid__image" src="images/catalog/dessert/dessert-1.png"
@@ -667,6 +667,7 @@
         </div>
     </footer>
 
+    <script src="scripts/category.js"></script>
     <script src="scripts/theme.js"></script>
 </body>
 
