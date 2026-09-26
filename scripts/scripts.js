@@ -1,5 +1,6 @@
 (function () {
     const AUTOPLAY_DELAY = 5500;
+    const SWIPE_THRESHOLD = 50;
 
     const slider = document.querySelector('.slider__row');
     if (!slider) return;
@@ -17,6 +18,10 @@
     let elapsed = 0;
     let lastTick = 0;
     let rafId = null;
+    let isSelecting = false;
+    let pointerStartX = null;
+    let pointerStartY = null;
+    let pointerMoved = false;
 
     function loop(time) {
         if (isPaused) return;
@@ -48,12 +53,19 @@
         isPaused = true;
         if (rafId) cancelAnimationFrame(rafId);
         rafId = null;
+
+        document.addEventListener('pointerup', resume, { once: true });
+        document.addEventListener('pointercancel', resume, { once: true });
     }
 
     function resume() {
         if (!isPaused) return;
+        if (isSelecting) return;
         isPaused = false;
         lastTick = 0;
+        pointerStartX = null;
+        pointerStartY = null;
+        pointerMoved = false;
         startLoop();
     }
 
@@ -93,16 +105,63 @@
         updateDotProgress(0);
     }
 
+    function onPointerDown(e) {
+        if (e.target.closest('.slider__button')) return;
+
+        isSelecting = false;
+
+        pointerStartX = e.clientX;
+        pointerStartY = e.clientY;
+        pointerMoved = false;
+    }
+
+    function onPointerMove(e) {
+        if (pointerMoved) return;
+        if (pointerStartX === null || pointerStartY === null) return;
+
+        const dx = e.clientX - pointerStartX;
+        const dy = e.clientY - pointerStartY;
+
+        if (Math.abs(dy) > Math.abs(dx)) return;
+
+        if (Math.abs(dx) > SWIPE_THRESHOLD) {
+            pointerMoved = true;
+            if (dx < 0) setSliderPrev();
+            else setSliderNext();
+        }
+    }
+
+    function onPointerUp() {
+        pointerStartX = null;
+        pointerStartY = null;
+        pointerMoved = false;
+    }
+
     updateSlider();
     startLoop();
 
     slider.addEventListener('pointerdown', pause);
-    slider.addEventListener('pointerup', resume);
-    slider.addEventListener('pointerleave', resume);
-    slider.addEventListener('pointercancel', resume);
+
+    slider.addEventListener('pointerdown', onPointerDown);
+    slider.addEventListener('pointermove', onPointerMove);
+    slider.addEventListener('pointerup', onPointerUp);
+    slider.addEventListener('pointercancel', onPointerUp);
 
     slider.addEventListener('contextmenu', (e) => {
-        if (e.target.tagName === 'IMG') e.preventDefault();
+        if (e.target.closest('img')) e.preventDefault();
+    });
+
+    document.addEventListener('selectionchange', () => {
+        const sel = document.getSelection();
+        const hasSelection = sel && !sel.isCollapsed && slider.contains(sel.anchorNode);
+
+        if (hasSelection && !isSelecting) {
+            isSelecting = true;
+            pause();
+        } else if (!hasSelection && isSelecting) {
+            isSelecting = false;
+            resume();
+        }
     });
 
     sliderButtonPrev?.addEventListener('click', () => setSliderPrev());

@@ -325,6 +325,7 @@ body {
     height: 640px;
     overflow: hidden;
     -webkit-touch-callout: none;
+    touch-action: pan-y;
 }
 
 .slider__content {
