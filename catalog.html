@@ -180,6 +180,20 @@
             <path d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3" stroke="currentColor" stroke-linecap="round"
                 stroke-linejoin="round" />
         </symbol>
+
+        <symbol id="icon-openBurgerMenu" viewBox="0 0 18 10" fill="none">
+            <path d="M0.75 0.75H16.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path d="M0.75 8.75H16.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </symbol>
+
+        <symbol id="icon-closeBurgerMenu" viewBox="0 0 13 13" fill="none">
+            <path d="M0.75 0.75L12.0637 12.0637" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path d="M0.75 12.0637L12.0637 0.749998" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </symbol>
     </svg>
 
     <header class="header">
@@ -189,23 +203,34 @@
                     <use href="#icon-logo"></use>
                 </svg>
             </a>
+            <div class="header__nav-wrapper">
+                <nav class="header__nav" id="main-menu">
+                    <ul class="header__menu">
+                        <li class="header__menu-item">
+                            <a class="header__menu-link" href="./index.html#favorite-coffee">Favorite coffee</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a class="header__menu-link" href="./index.html#about">About</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a class="header__menu-link" href="./index.html#mobile-app">Mobile app</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a class="header__menu-link" href="./index.html#contact">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
 
-            <nav class="header__nav">
-                <ul class="header__menu">
-                    <li class="header__menu-item">
-                        <a class="header__menu-link" href="./index.html#favorite-coffee">Favorite coffee</a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a class="header__menu-link" href="./index.html#about">About</a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a class="header__menu-link" href="./index.html#mobile-app">Mobile app</a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a class="header__menu-link" href="./index.html#contact">Contact us</a>
-                    </li>
-                </ul>
-            </nav>
+                <div class="coffee-menu">
+                    <a class="header__menu-link header__menu-link--active" href="#">
+                        Menu
+                        <svg class="header__menu-icon">
+                            <use href="#icon-coffeeCup"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
             <div class="header__actions">
                 <ul class="header__actions-list">
                     <li class="header__actions-item">
@@ -222,8 +247,8 @@
                             </button>
                         </div>
                     </li>
-                    <li class="header__actions-item">
-                        <a class="header__menu-link header__menu-link--active" href="#">
+                    <li class="header__actions-item header__actions-item--coffee-menu">
+                        <a class="header__menu-link" href="#">
                             Menu
                             <svg class="header__menu-icon">
                                 <use href="#icon-coffeeCup"></use>
@@ -233,8 +258,12 @@
                     <li class="header__actions-item header__actions-item--burger-menu">
                         <button class="header__burger-menu" type="button" aria-label="Open menu" aria-expanded="false"
                             aria-controls="main-menu">
-                            <svg class="header__icon header__icon--menu">
-                                <use href="#icon-burgerMenu"></use>
+                            <svg class="header__icon header__icon--open">
+                                <use href="#icon-openBurgerMenu"></use>
+
+                            </svg>
+                            <svg class="header__icon header__icon--close">
+                                <use href="#icon-closeBurgerMenu"></use>
                             </svg>
                         </button>
                     </li>
@@ -680,6 +709,7 @@
         </div>
     </footer>
 
+    <script src="scripts/burgerMenu.js"></script>
     <script src="scripts/category.js"></script>
     <script src="scripts/theme.js"></script>
 </body>

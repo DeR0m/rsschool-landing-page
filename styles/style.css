@@ -47,9 +47,8 @@ body {
 }
 
 .container {
-    max-width: 1360px;
-    margin: 20px auto;
-    padding: 0 40px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .header {
@@ -58,6 +57,7 @@ body {
 
 .container--header {
     display: flex;
+    padding: 20px 40px;
     justify-content: space-between;
     gap: 20px;
     align-items: center;
@@ -69,6 +69,10 @@ body {
     width: 100px;
     height: 60px;
     color: var(--text-primary)
+}
+
+.header__nav-wrapper {
+    display: flex;
 }
 
 .header__menu {
@@ -106,6 +110,10 @@ body {
 .header__menu-icon {
     width: 20px;
     height: 20px;
+}
+
+.coffee-menu {
+    display: none;
 }
 
 .theme-switch {
@@ -212,9 +220,8 @@ body {
     cursor: pointer;
 }
 
-.header__icon--menu {
-    width: 18px;
-    height: 8px;
+.header__icon--close {
+    display: none;
 }
 
 .hero {

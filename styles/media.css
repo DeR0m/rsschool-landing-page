@@ -16,16 +16,92 @@
 
 @media (max-width: 768px) {
 
-    .header__nav {
+    .header__actions-item--burger-menu {
+        display: block;
+    }
+
+    .header__icon--open {
+        width: 18px;
+        height: 8px;
+    }
+
+    .header__icon--close {
+        width: 11.31px;
+        height: 11.31px;
         display: none;
+    }
+
+    .header__nav-wrapper {
+        position: fixed;
+        top: 100px;
+        right: -100%;
+        max-width: 768px;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-page);
+        padding: 222px 40px;
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+        transition: right 0.4s ease;
+        z-index: 100;
+    }
+
+    .header__menu {
+        margin: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
     }
 
     .header__menu-link {
+        font-size: 32px;
+        line-height: 1.25;
+    }
+
+    .header__actions-item--coffee-menu {
         display: none;
     }
 
-    .header__actions-item--burger-menu {
+    .coffee-menu {
         display: flex;
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header__menu-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header--open .header__nav-wrapper {
+        right: 0;
+    }
+
+    .header--open .header__icon--open {
+        display: none;
+    }
+
+    .header--open::before {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .header--open .header__icon--close {
+        display: block;
+    }
+
+    body:has(.header--open) {
+        overflow: hidden;
+    }
+
+    .container--header {
+        padding: 20px 40px;
     }
 
     .hero__container {
@@ -50,14 +126,40 @@
         flex-wrap: wrap;
     }
 
-
+    .container--footer {
+        padding: 100px 60px;
+    }
 }
 
 @media (max-width: 640px) {
+
+    .container--header {
+        padding: 20px 16px;
+        margin: 0;
+    }
+
+
+    .header__nav-wrapper {
+        padding: 60px 16px;
+    }
+
+    .hero__container {
+        padding: 60px 16px;
+    }
+
+    .hero,
+    .favorite-coffee,
+    .about,
+    .mobile-app,
+    .footer {
+        padding: 0 16px;
+    }
+
     .hero__title {
         font-size: 42px;
         letter-spacing: 1.15;
     }
+
 
     .favorite-coffee__title,
     .about__title,
@@ -78,16 +180,6 @@
 }
 
 @media (max-width: 460px) {
-
-    .favorite-coffee,
-    .about,
-    .mobile-app {
-        padding: 0;
-    }
-
-    .container {
-        padding: 0 16px;
-    }
 
     .hero__container {
         padding: 60px 16px;
