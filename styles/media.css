@@ -23,12 +23,27 @@
     .header__icon--open {
         width: 18px;
         height: 8px;
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
     }
 
     .header__icon--close {
         width: 11.31px;
         height: 11.31px;
-        display: none;
+        margin-left: -11.31px;
+        opacity: 0;
+        transform: rotate(-90deg) scale(0.5);
+    }
+
+    .header--open .header__icon--open {
+        opacity: 0;
+        transform: rotate(90deg) scale(0.5);
+    }
+
+    .header--open .header__icon--close {
+        opacity: 1;
+        margin: 0;
+        transform: rotate(0deg) scale(1);
     }
 
     .header__nav-wrapper {
