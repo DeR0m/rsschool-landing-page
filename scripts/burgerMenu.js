@@ -3,28 +3,46 @@
     const burgerButton = document.querySelector('.header__burger-menu');
     const menuLinks = document.querySelectorAll('.header__menu-link');
 
+    const isOpen = () => header.classList.contains('header--open');
+
+    if (!header || !burgerButton) return;
+
+    function openMenu() {
+        header.classList.add('header--open');
+        burgerButton.setAttribute('aria-expanded', 'true');
+        burgerButton.setAttribute('aria-label', 'Close menu');
+    }
+
+    function closeMenu() {
+        header.classList.remove('header--open');
+        burgerButton.setAttribute('aria-expanded', 'false');
+        burgerButton.setAttribute('aria-label', 'Open menu');
+    }
+
     burgerButton.addEventListener('click', () => {
-        const isOpen = header.classList.toggle('header--open');
-        burgerButton.setAttribute('aria-expanded', isOpen);
-        burgerButton.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        isOpen() ? closeMenu() : openMenu();
     });
 
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
-            header.classList.remove('header--open');
-            burgerButton.setAttribute('aria-expanded', 'false');
-            burgerButton.setAttribute('aria-label', 'Open menu');
+            if (isOpen()) closeMenu();
         });
     });
 
     document.addEventListener('click', (e) => {
-        if (!header.classList.contains('header--open')) return;
-        const clickedInsideMenu = e.target.closest('.header__nav');
+        if (!isOpen()) return
+        const clickedInsideMenu = e.target.closest('.header__nav-wrapper');
         const clickedBurger = e.target.closest('.header__burger-menu');
         if (!clickedInsideMenu && !clickedBurger) {
-            header.classList.remove('header--open');
-            burgerButton.setAttribute('aria-expanded', 'false');
-            burgerButton.setAttribute('aria-label', 'Open menu');
+            closeMenu();
+            burgerButton.focus();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Escape' && isOpen()) {
+            closeMenu();
+            burgerButton.focus();
         }
     });
 })();
