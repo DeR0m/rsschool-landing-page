@@ -336,13 +336,15 @@
     background-color: var(--bg-page);
 }
 
-.modal__button:hover {
-    color: var(--text-inverse);
-    background-color: var(--bg-container);
-}
+@media (hover: hover) {
+    .modal__button:hover {
+        color: var(--text-inverse);
+        background-color: var(--bg-container);
+    }
 
-.modal__button:hover .menu__item {
-    background-color: var(--bg-page);
+    .modal__button:hover .menu__item {
+        background-color: var(--bg-page);
+    }
 }
 
 .modal__alert {
