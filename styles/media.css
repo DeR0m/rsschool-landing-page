@@ -177,6 +177,10 @@
         flex-wrap: wrap;
         padding: 60px 16px;
     }
+
+    .modal__box {
+        display: none;
+    }
 }
 
 @media (max-width: 460px) {

@@ -194,6 +194,22 @@
             <path d="M0.75 12.0637L12.0637 0.749998" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                 stroke-linejoin="round" />
         </symbol>
+
+        <symbol id="icon-alert" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_147811_7611)">
+                <path d="M8 7.66663V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M8 5.00667L8.00667 4.99926" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path
+                    d="M8.00016 14.6667C11.6821 14.6667 14.6668 11.6819 14.6668 8.00004C14.6668 4.31814 11.6821 1.33337 8.00016 1.33337C4.31826 1.33337 1.3335 4.31814 1.3335 8.00004C1.3335 11.6819 4.31826 14.6667 8.00016 14.6667Z"
+                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <defs>
+                <clipPath id="clip0_147811_7611">
+                    <rect width="16" height="16" fill="white" />
+                </clipPath>
+            </defs>
+        </symbol>
     </svg>
 
     <header class="header">
@@ -279,7 +295,7 @@
                     <h1 class="menu__title">
                         Behind each of our cups hides an <span class="text-accent">amazing surprise</span>
                     </h1>
-                    <div class="menu__tabs">
+                    <div class="menu__tabs" role="tablist">
                         <button class="menu__button menu__button--active" data-tab="coffee" role="tab">
                             <span class="menu__item menu__item--active">
                                 <img class="menu__icon" src="images/favicons/catalog/coffee.png" alt="coffee">
@@ -301,7 +317,7 @@
                     </div>
                 </div>
 
-                <div class="menu-panel menu-panel--active" data-content="coffee" role="tabcategory">
+                <div class="menu-panel menu-panel--active" data-content="coffee" role="tabpanel" id="panel-coffee" aria-labelledby="tab-coffee">
                     <div class="menu-grid__item">
                         <div class="menu-grid__box">
                             <img class="menu-grid__image" src="images/catalog/coffee/coffee-1.jpg" alt="Irish coffee">
@@ -440,7 +456,7 @@
                     </div>
                 </div>
 
-                <div class="menu-panel" data-content="tea" role="tabcategory">
+                <div class="menu-panel" data-content="tea" role="tabpanel" id="panel-tea" aria-labelledby="tab-coffee">
                     <div class="menu-grid__item">
                         <div class="menu-grid__box">
                             <img class="menu-grid__image" src="images/catalog/tea/tea-1.png" alt="Moroccan">
@@ -509,7 +525,7 @@
                     </div>
                 </div>
 
-                <div class="menu-panel" data-content="dessert" role="tabcategory">
+                <div class="menu-panel" data-content="dessert" role="tabpanel" id="panel-dessert" aria-labelledby="tab-coffee">
                     <div class="menu-grid__item">
                         <div class="menu-grid__box">
                             <img class="menu-grid__image" src="images/catalog/dessert/dessert-1.png"
@@ -654,6 +670,43 @@
                     </svg>
                 </button>
             </div>
+
+            <div class="modal" id="modal">
+                <div class="modal__window">
+                    <div class="modal__box">
+                        <img class="modal__box-img" id="modal__img" src="#" alt="">
+                    </div>
+                    <div class="modal__description">
+                        <div class="modal__title">
+                            <h2 class="modal__name" id="modal__name">Modal name</h2>
+                            <p class="modal__text" id="modal__text"></p>
+                        </div>
+                        <div class="modal__size">
+                            <p class="modal__texts">Size</p>
+                            <div class="modal__tabs" id="modal__sizes"></div>
+                        </div>
+                        <div class="modal__additives">
+                            <p class="modal__texts">Additives</p>
+                            <div class="modal__tabs" id="modal__additives"></div>
+                        </div>
+                        <div class="modal__total">
+                            <h2 class="modal__name">Total</h2>
+                            <h2 class="modal__name">$<span id="modal__total">7.00</span></h2>
+                        </div>
+
+                        <div class="modal__alert">
+                            <svg class="modal__alert-icon">
+                                <use href="#icon-alert"></use>
+                            </svg>
+
+                            <p class="modal__alert-text">The cost is not final. Download our mobile app to see the final
+                                price and place your order.
+                                Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</p>
+                        </div>
+                        <button class="modal__button-close">Close</button>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -711,6 +764,7 @@
 
     <script src="scripts/burgerMenu.js"></script>
     <script src="scripts/category.js"></script>
+    <script src="scripts/modalWindow.js"></script>
     <script src="scripts/theme.js"></script>
 </body>
 
