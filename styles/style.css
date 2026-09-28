@@ -90,6 +90,7 @@ body {
     margin: 0;
     gap: 24px;
     align-items: center;
+    border: 2px solid transparent;
 }
 
 .header__menu-link {
@@ -97,7 +98,8 @@ body {
     gap: 4px;
     color: var(--text-primary);
     text-decoration: none;
-    transition: all 0.5s ease-out;
+    border: 2px solid transparent;
+    transition: border 0.5s ease-out;
 }
 
 .header__menu-link:hover {
@@ -231,6 +233,7 @@ body {
     padding: 0 40px;
     font: 600 16px/1.5 'Inter', sans-serif;
 }
+
 .hero__container {
     position: relative;
     overflow: hidden;
@@ -747,6 +750,7 @@ body {
     display: flex;
     gap: 4px;
     cursor: pointer;
+    border: 2px solid transparent;
     transition: all 0.5s ease-out;
 }
 
