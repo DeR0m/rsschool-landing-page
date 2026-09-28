@@ -305,7 +305,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    color: var(--text-primary);
 }
 
 .modal__button {
@@ -317,6 +316,9 @@
     background-color: transparent;
     justify-content: center;
     align-items: center;
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 1.5;
     transition: all 0.3s ease-in;
 }
 
@@ -328,6 +330,10 @@
 .modal__button--active {
     color: var(--text-inverse);
     background-color: var(--bg-container);
+}
+
+.modal__button--active .menu__item {
+    background-color: var(--bg-page);
 }
 
 .modal__button:hover {
