@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee House</title>
+    <link rel="icon" href="images/favicons/cafe.ico" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
@@ -171,6 +172,44 @@
             <path d="M0.75 8.75H16.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                 stroke-linejoin="round" />
         </symbol>
+
+        <symbol id="icon-refresh" viewBox="0 0 24 24" fill="none">
+            <path
+                d="M21.8883 13.5C21.1645 18.3113 17.013 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C16.1006 2 19.6248 4.46819 21.1679 8"
+                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3" stroke="currentColor" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </symbol>
+
+        <symbol id="icon-openBurgerMenu" viewBox="0 0 18 10" fill="none">
+            <path d="M0.75 0.75H16.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path d="M0.75 8.75H16.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </symbol>
+
+        <symbol id="icon-closeBurgerMenu" viewBox="0 0 13 13" fill="none">
+            <path d="M0.75 0.75L12.0637 12.0637" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path d="M0.75 12.0637L12.0637 0.749998" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </symbol>
+
+        <symbol id="icon-alert" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_147811_7611)">
+                <path d="M8 7.66663V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M8 5.00667L8.00667 4.99926" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path
+                    d="M8.00016 14.6667C11.6821 14.6667 14.6668 11.6819 14.6668 8.00004C14.6668 4.31814 11.6821 1.33337 8.00016 1.33337C4.31826 1.33337 1.3335 4.31814 1.3335 8.00004C1.3335 11.6819 4.31826 14.6667 8.00016 14.6667Z"
+                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <defs>
+                <clipPath id="clip0_147811_7611">
+                    <rect width="16" height="16" fill="white" />
+                </clipPath>
+            </defs>
+        </symbol>
     </svg>
 
     <header class="header">
@@ -180,23 +219,34 @@
                     <use href="#icon-logo"></use>
                 </svg>
             </a>
+            <div class="header__nav-wrapper">
+                <nav class="header__nav" id="main-menu">
+                    <ul class="header__menu">
+                        <li class="header__menu-item">
+                            <a class="header__menu-link" href="./index.html#favorite-coffee">Favorite coffee</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a class="header__menu-link" href="./index.html#about">About</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a class="header__menu-link" href="./index.html#mobile-app">Mobile app</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a class="header__menu-link" href="./index.html#contact">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
 
-            <nav class="header__nav">
-                <ul class="header__menu">
-                    <li class="header__menu-item">
-                        <a class="header__menu-link" href="./index.html#favorite-coffee">Favorite coffee</a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a class="header__menu-link" href="./index.html#about">About</a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a class="header__menu-link" href="./index.html#mobile-app">Mobile app</a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a class="header__menu-link" href="./index.html#contact">Contact us</a>
-                    </li>
-                </ul>
-            </nav>
+                <div class="coffee-menu">
+                    <a class="header__menu-link header__menu-link--active" href="#">
+                        Menu
+                        <svg class="header__menu-icon">
+                            <use href="#icon-coffeeCup"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
             <div class="header__actions">
                 <ul class="header__actions-list">
                     <li class="header__actions-item">
@@ -213,7 +263,7 @@
                             </button>
                         </div>
                     </li>
-                    <li class="header__actions-item">
+                    <li class="header__actions-item header__actions-item--coffee-menu">
                         <a class="header__menu-link header__menu-link--active" href="#">
                             Menu
                             <svg class="header__menu-icon">
@@ -224,8 +274,12 @@
                     <li class="header__actions-item header__actions-item--burger-menu">
                         <button class="header__burger-menu" type="button" aria-label="Open menu" aria-expanded="false"
                             aria-controls="main-menu">
-                            <svg class="header__icon header__icon--menu">
-                                <use href="#icon-burgerMenu"></use>
+                            <svg class="header__icon header__icon--open">
+                                <use href="#icon-openBurgerMenu"></use>
+
+                            </svg>
+                            <svg class="header__icon header__icon--close">
+                                <use href="#icon-closeBurgerMenu"></use>
                             </svg>
                         </button>
                     </li>
@@ -241,20 +295,20 @@
                     <h1 class="menu__title">
                         Behind each of our cups hides an <span class="text-accent">amazing surprise</span>
                     </h1>
-                    <div class="menu__tabs">
-                        <button class="menu__button menu__button--active" data-tab="coffee">
+                    <div class="menu__tabs" role="tablist">
+                        <button class="menu__button menu__button--active" data-tab="coffee" role="tab">
                             <span class="menu__item menu__item--active">
                                 <img class="menu__icon" src="images/favicons/catalog/coffee.png" alt="coffee">
                             </span>
                             Coffee
                         </button>
-                        <button class="menu__button" data-tab="tea">
+                        <button class="menu__button" data-tab="tea" role="tab">
                             <span class="menu__item">
                                 <img class="menu__icon" src="images/favicons/catalog/tea.png" alt="tea">
                             </span>
                             Tea
                         </button>
-                        <button class="menu__button" data-tab="dessert">
+                        <button class="menu__button" data-tab="dessert" role="tab">
                             <span class="menu__item">
                                 <img class="menu__icon" src="images/favicons/catalog/dessert.png" alt="dessert">
                             </span>
@@ -263,351 +317,47 @@
                     </div>
                 </div>
 
-                <div class="menu-panel" data-content="coffee">
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/coffee/coffee-1.jpg" alt="Irish coffee">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Irish coffee</h2>
-                                <p class="menu-grid__text">
-                                    Fragrant black coffee with
-                                    Jameson Irish whiskey and whipped milk
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $7.00
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/coffee/coffee-2.jpg" alt="Kahlua coffee">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Kahlua coffee</h2>
-                                <p class="menu-grid__text">
-                                    Classic coffee with milk and
-                                    Kahlua liqueur under a cap of frothed milk
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $7.00
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/coffee/coffee-3.jpg" alt="Honey raf">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Honey raf</h2>
-                                <p class="menu-grid__text">
-                                    Espresso with frothed milk,
-                                    cream and aromatic honey
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $5.50
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/coffee/coffee-4.jpg" alt="Ice cappuccino">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Ice cappuccino</h2>
-                                <p class="menu-grid__text">
-                                    Cappuccino with soft thick
-                                    foam in summer version with ice
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $5.00
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/coffee/coffee-5.jpg" alt="Espresso">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Espresso</h2>
-                                <p class="menu-grid__text">
-                                    Classic black coffee
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $4.50
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/coffee/coffee-6.jpg" alt="Latte">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Latte</h2>
-                                <p class="menu-grid__text">
-                                    Espresso coffee with the addition
-                                    of steamed milk and dense milk foam
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $5.50
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/coffee/coffee-7.jpg"
-                                alt="Latte macchiato">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Latte macchiato</h2>
-                                <p class="menu-grid__text">
-                                    Espresso with frothed milk and chocolate
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $5.50
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/coffee/coffee-8.jpg"
-                                alt="Coffee with cognac">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Coffee with cognac</h2>
-                                <p class="menu-grid__text">
-                                    Fragrant black coffee with
-                                    cognac and whipped cream
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $6.50
-                            </p>
-                        </div>
-                    </div>
-                </div>
+               
+                <button class="menu__more" type="button" aria-label="Load more">
+                    <svg class="menu__more-icon">
+                        <use href="#icon-refresh"></use>
+                    </svg>
+                </button>
+            </div>
 
-                <div class="menu-panel is-hidden" data-content="tea">
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/tea/tea-1.png" alt="Moroccan">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Moroccan</h2>
-                                <p class="menu-grid__text">
-                                    Fragrant black tea with the addition of
-                                    tangerine, cinnamon, honey, lemon and mint
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $4.50
-                            </p>
-                        </div>
+            <div class="modal" id="modal">
+                <div class="modal__window">
+                    <div class="modal__box">
+                        <img class="modal__box-img" id="modal__img" src="#" alt="">
                     </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/tea/tea-2.png" alt="Ginger">
+                    <div class="modal__description">
+                        <div class="modal__title">
+                            <h2 class="modal__name" id="modal__name">Modal name</h2>
+                            <p class="modal__text" id="modal__text"></p>
                         </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Ginger</h2>
-                                <p class="menu-grid__text">
-                                    Original black tea with fresh ginger, lemon and honey
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $5.00
-                            </p>
+                        <div class="modal__size">
+                            <p class="modal__texts">Size</p>
+                            <div class="modal__tabs" id="modal__sizes"></div>
                         </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/tea/tea-3.png" alt="Cranberry">
+                        <div class="modal__additives">
+                            <p class="modal__texts">Additives</p>
+                            <div class="modal__tabs" id="modal__additives"></div>
                         </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Cranberry</h2>
-                                <p class="menu-grid__text">
-                                    Invigorating black tea with cranberry and honey
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $5.00
-                            </p>
+                        <div class="modal__total">
+                            <h2 class="modal__name">Total</h2>
+                            <h2 class="modal__name">$<span id="modal__total">7.00</span></h2>
                         </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/tea/tea-4.png" alt="Sea buckthorn">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Sea buckthorn</h2>
-                                <p class="menu-grid__text">
-                                    Toning sweet black tea with sea buckthorn,
-                                    fresh thyme and cinnamon
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $5.50
-                            </p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="menu-panel is-hidden" data-content="dessert">
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/dessert/dessert-1.png"
-                                alt="Marble cheesecake">
+                        <div class="modal__alert">
+                            <svg class="modal__alert-icon">
+                                <use href="#icon-alert"></use>
+                            </svg>
+
+                            <p class="modal__alert-text">The cost is not final. Download our mobile app to see the final
+                                price and place your order.
+                                Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</p>
                         </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Marble cheesecake</h2>
-                                <p class="menu-grid__text">
-                                    Philadelphia cheese with lemon zest
-                                    on a light sponge cake and red currant jam
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $3.50
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/dessert/dessert-2.png" alt="Red velvet">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Red velvet</h2>
-                                <p class="menu-grid__text">
-                                    Layer cake with cream cheese frosting
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $4.00
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/dessert/dessert-3.png" alt="Cheesecakes">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Cheesecakes</h2>
-                                <p class="menu-grid__text">
-                                    Soft cottage cheese pancakes
-                                    with sour cream and fresh
-                                    berries and sprinkled with powdered sugar
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $4.50
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/dessert/dessert-4.png" alt="Creme brulee">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Creme brulee</h2>
-                                <p class="menu-grid__text">
-                                    Delicate creamy dessert
-                                    in a caramel basket with wild berries
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $4.00
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/dessert/dessert-5.png" alt="Pancakes">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Pancakes</h2>
-                                <p class="menu-grid__text">
-                                    Tender pancakes with
-                                    strawberry jam and fresh strawberries
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $4.50
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/dessert/dessert-6.png" alt="Honey cake">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Honey cake</h2>
-                                <p class="menu-grid__text">
-                                    Classic honey cake with delicate custard
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $4.50
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/dessert/dessert-7.png"
-                                alt="Chocolate cake">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Chocolate cake</h2>
-                                <p class="menu-grid__text">
-                                    Cake with hot chocolate
-                                    filling and nuts with dried apricots
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $5.50
-                            </p>
-                        </div>
-                    </div>
-                    <div class="menu-grid__item">
-                        <div class="menu-grid__box">
-                            <img class="menu-grid__image" src="images/catalog/dessert/dessert-8.png" alt="Black forest">
-                        </div>
-                        <div class="menu-grid__content">
-                            <div class="menu-grid__title">
-                                <h2 class="menu-grid__name">Black forest</h2>
-                                <p class="menu-grid__text">
-                                    A combination of thin sponge cake
-                                    with cherry jam and light chocolate mousse
-                                </p>
-                            </div>
-                            <p class="menu-grid__cost">
-                                $6.50
-                            </p>
-                        </div>
+                        <button class="modal__button-close">Close</button>
                     </div>
                 </div>
             </div>
@@ -647,8 +397,9 @@
                 <div class="footer__contacts">
                     <ul class="contact__list">
                         <li class="contact__item">
-                            <img class="contact__icon" src="images/favicons/pin-alt.png" alt="icon">
-                            8558 Green Rd., LA
+                            <a class="contact__link" href="https://maps.app.goo.gl/HXSHzyig95G9XR2o8" target="_blank">
+                                <img class="contact__icon" src="images/favicons/pin-alt.png" alt="icon">
+                                8558 Green Rd., LA</a>
                         </li>
                         <li class="contact__item">
                             <a class="contact__link" href="tel:+16035550123" target="_blank">
@@ -666,6 +417,9 @@
         </div>
     </footer>
 
+    <script src="scripts/burgerMenu.js"></script>
+    <script src="scripts/category.js"></script>
+    <script src="scripts/modalWindow.js"></script>
     <script src="scripts/theme.js"></script>
 </body>
 

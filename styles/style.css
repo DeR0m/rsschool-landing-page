@@ -36,6 +36,7 @@ body * {
 
 html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -47,9 +48,8 @@ body {
 }
 
 .container {
-    max-width: 1360px;
-    margin: 20px auto;
-    padding: 0 40px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .header {
@@ -58,6 +58,7 @@ body {
 
 .container--header {
     display: flex;
+    padding: 20px 40px;
     justify-content: space-between;
     gap: 20px;
     align-items: center;
@@ -69,6 +70,10 @@ body {
     width: 100px;
     height: 60px;
     color: var(--text-primary)
+}
+
+.header__nav-wrapper {
+    display: flex;
 }
 
 .header__menu {
@@ -85,6 +90,7 @@ body {
     margin: 0;
     gap: 24px;
     align-items: center;
+    border: 2px solid transparent;
 }
 
 .header__menu-link {
@@ -92,7 +98,8 @@ body {
     gap: 4px;
     color: var(--text-primary);
     text-decoration: none;
-    transition: all 0.5s ease-out;
+    border: 2px solid transparent;
+    transition: border 0.5s ease-out;
 }
 
 .header__menu-link:hover {
@@ -106,6 +113,10 @@ body {
 .header__menu-icon {
     width: 20px;
     height: 20px;
+}
+
+.coffee-menu {
+    display: none;
 }
 
 .theme-switch {
@@ -133,6 +144,7 @@ body {
     gap: 10px;
     color: var(--text-inverse);
     background-color: var(--text-accent);
+    cursor: pointer;
 }
 
 [data-theme="dark"] .theme-switch__light {
@@ -147,6 +159,7 @@ body {
     gap: 10px;
     color: var(--text-inverse);
     background-color: transparent;
+    cursor: pointer;
 }
 
 [data-theme="light"] .theme-switch__dark {
@@ -158,6 +171,7 @@ body {
     border: none;
     border-radius: 100px;
     background-color: transparent;
+    cursor: pointer;
 }
 
 [data-theme="dark"] .theme-switch__dark {
@@ -170,6 +184,7 @@ body {
     border-radius: 100px;
     background-color: var(--text-accent);
     color: var(--text-inverse);
+    cursor: pointer;
 }
 
 [data-theme="light"] .theme-switch__dark:hover {
@@ -201,16 +216,20 @@ body {
     align-items: center;
     width: 36px;
     height: 36px;
+    padding: 0;
     border: 1px solid var(--border-inverse);
     border-radius: 100px;
     background-color: transparent;
     color: var(--text-primary);
+    cursor: pointer;
 }
 
-.header__icon--menu {
-    width: 18px;
-    height: 8px;
+.header__icon--open,
+.header__icon--close {
+    flex-shrink: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 
 .hero {
     width: 100%;
@@ -220,14 +239,25 @@ body {
 }
 
 .hero__container {
-    background-image: url("../images/img-hero.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    position: relative;
+    overflow: hidden;
     padding: 100px;
     border-radius: 40px;
 }
 
+.hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
 .hero__content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     max-width: 530px;
@@ -314,23 +344,44 @@ body {
 }
 
 .slider__row {
+    position: relative;
     max-width: 1152px;
+    width: 100%;
+    height: 640px;
+    overflow: hidden;
+    -webkit-touch-callout: none;
+    touch-action: pan-y;
 }
 
 .slider__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     max-width: 480px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 20px;
+    opacity: 0;
+    visibility: visible;
+    transition: opacity 0.6s ease, visibility 0s;
+    pointer-events: none;
+    touch-action: pan-y;
+}
+
+.slider__content.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .slider__description {
     width: 100%;
     max-width: 480px;
     margin: 0 auto;
+    touch-action: pan-y;
 }
 
 .slider__content img {
@@ -339,6 +390,11 @@ body {
     height: auto;
     display: block;
     margin: 0 auto;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+    pointer-events: none;
+    touch-action: pan-y;
 }
 
 .slider__title {
@@ -369,6 +425,7 @@ body {
     border-radius: 50%;
     color: var(--text-primary);
     border: 2px solid var(--border-inverse);
+    cursor: pointer;
     transition: all 0.5s ease-out;
 }
 
@@ -397,16 +454,51 @@ body {
 }
 
 .slider__dot {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    padding: 0;
+    background-color: var(--border-primary);
+    position: relative;
     width: 40px;
     height: 4px;
-    background-color: var(--border-primary);
     border-radius: 100px;
+    overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+    -webkit-touch-callout: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
-.slider__dot.slider__dot--active {
+@media (hover: hover) and (pointer: fine) {
+    .slider__dot:not(.slider__dot--active):hover {
+        background-color: var(--bg-container);
+    }
+}
+
+.slider__dot:focus {
+    outline: none;
+}
+
+.slider__dot:focus-visible {
+    outline: 2px solid var(--bg-container);
+    outline-offset: 2px;
+}
+
+.slider__dot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-color: var(--bg-container);
+    transform-origin: left center;
+    transform: scaleX(var(--dot-progress, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.slider__dot.slider__dot--active::before {
+    opacity: 1;
 }
 
 .about {
@@ -431,6 +523,7 @@ body {
     gap: 40px;
     flex-wrap: nowrap;
     justify-content: center;
+    cursor: pointer;
 }
 
 .about__column {
@@ -446,7 +539,6 @@ body {
     max-width: 660px;
     border-radius: 20px;
     overflow: hidden;
-    transition: transform 0.5s ease-out;
 }
 
 .about__box--lg {
@@ -461,10 +553,13 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+    transform: scale(1.1);
+    transition: transform 0.5s ease-out;
 }
 
-.about__box:hover {
-    transform: scale(0.9);
+.about__box:hover .about__image {
+    transform: scale(1.0);
 }
 
 .mobile-app {
@@ -660,10 +755,13 @@ body {
 .contact__item {
     display: flex;
     gap: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
     transition: all 0.5s ease-out;
 }
 
 .contact__item:hover {
+    box-sizing: border-box;
     border-bottom: 2px solid var(--text-inverse);
 }
 
