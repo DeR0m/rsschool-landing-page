@@ -4,11 +4,14 @@
     if (!tabList) return;
 
     const tabs = Array.from(tabList.querySelectorAll('.menu__button'));
-    const panels = Array.from(document.querySelectorAll('.menu-panel'));
+    let panels = Array.from(document.querySelectorAll('.menu-panel'));
     const moreButton = document.querySelector('.menu__more');
+
+    const container = document.querySelector('.container--main');
 
     if (!moreButton) return;
     const mq = window.matchMedia('(max-width: 768px)');
+    let catalogData = null;
 
     const IMG_EXT = {
         coffee: 'jpg',
@@ -22,6 +25,22 @@
             .trim()
             .replace(/[^a-z0-9]+/g, '-')
             .replace(/^-+|-+$/g, '');
+    }
+
+    function buildPanel(category) {
+        container.querySelectorAll('.menu-panel').forEach(p => p.remove());
+
+        const panel = document.createElement('div');
+        panel.className = 'menu-panel menu-panel--active';
+        panel.dataset.content = category;
+        panel.setAttribute('role', 'tabpanel');
+        panel.id = `panel-${category}`;
+        panel.setAttribute('aria-labelledby', `tab-${category}`);
+
+        container.insertBefore(panel, moreButton);
+
+        panels = [panel];
+        return panel;
     }
 
     function createCard(dish, index, category) {
@@ -45,15 +64,13 @@
         return card;
     }
 
-    function renderCatalog(data) {
-        panels.forEach(panel => {
-            const category = panel.dataset.content;
-            const items = data.filter(p => p.category === category);
+    function renderCatalog(data, panel) {
+        const category = panel.dataset.content;
+        const items = data.filter(p => p.category === category);
 
-            panel.innerHTML = '';
-            items.forEach((dish, index) => {
-                panel.appendChild(createCard(dish, index, category));
-            });
+        panel.innerHTML = '';
+        items.forEach((dish, index) => {
+            panel.appendChild(createCard(dish, index, category));
         });
     }
 
@@ -82,15 +99,11 @@
             const tabItem = el.querySelector('.menu__item');
             if (tabItem) tabItem.classList.toggle('menu__item--active', isActive);
         });
-        panels.forEach(panel => {
-            const isActive = panel.dataset.content === tabValue;
-            panel.classList.toggle('menu-panel--active', isActive);
 
-            if (isActive) {
-                panel.dataset.page = '1';
-                renderPanel(panel);
-            }
-        });
+        const panel = buildPanel(tabValue);
+        renderCatalog(catalogData, panel);
+        panel.dataset.page = '1';
+        renderPanel(panel);
     }
 
     tabs.forEach(item => {
@@ -117,10 +130,14 @@
     fetch('products.json')
         .then(r => r.json())
         .then(data => {
-            renderCatalog(data);
+            catalogData = data;
 
-            const activePanel = panels.find(p => p.classList.contains('menu-panel--active'));
-            if (activePanel) renderPanel(activePanel);
+            const activeTab = tabs.find(t => t.classList.contains('menu__button--active'));
+            const activeCategory = activeTab ? activeTab.dataset.tab : 'coffee';
+
+            const panel = buildPanel(activeCategory);
+            renderCatalog(data, panel);
+            renderPanel(panel);
         })
         .catch(err => console.error('Failed to load the menu:', err));
 })();
