@@ -10,6 +10,53 @@
     if (!moreButton) return;
     const mq = window.matchMedia('(max-width: 768px)');
 
+    const IMG_EXT = {
+        coffee: 'jpg',
+        tea: 'png',
+        dessert: 'png'
+    };
+
+    function slugify(str) {
+        return String(str)
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+
+    function createCard(dish, index, category) {
+        const card = document.createElement('div');
+        card.className = 'menu-grid__item';
+
+        const imgSrc = `images/catalog/${category}/${slugify(dish.name)}.${IMG_EXT[category] || 'jpg'}`;
+
+        card.innerHTML = `
+            <div class="menu-grid__box">
+                <img class="menu-grid__image" src="${imgSrc}" alt="${dish.name}">
+            </div>
+            <div class="menu-grid__content">
+                <div class="menu-grid__title">
+                    <h2 class="menu-grid__name">${dish.name}</h2>
+                    <p class="menu-grid__text">${dish.description}</p>
+                </div>
+                <p class="menu-grid__cost">$${dish.price}</p>
+            </div>
+        `;
+        return card;
+    }
+
+    function renderCatalog(data) {
+        panels.forEach(panel => {
+            const category = panel.dataset.content;
+            const items = data.filter(p => p.category === category);
+
+            panel.innerHTML = '';
+            items.forEach((dish, index) => {
+                panel.appendChild(createCard(dish, index, category));
+            });
+        });
+    }
+
     function getActivePanel() {
         return panels.find(p => p.classList.contains('menu-panel--active'));
     }
@@ -67,6 +114,13 @@
         if (panel) renderPanel(panel);
     });
 
-    const activePanel = panels.find(p => p.classList.contains('menu-panel--active'));
-    if (activePanel) renderPanel(activePanel);
+    fetch('products.json')
+        .then(r => r.json())
+        .then(data => {
+            renderCatalog(data);
+
+            const activePanel = panels.find(p => p.classList.contains('menu-panel--active'));
+            if (activePanel) renderPanel(activePanel);
+        })
+        .catch(err => console.error('Failed to load the menu:', err));
 })();
